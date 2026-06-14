@@ -3,61 +3,560 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ajay Sahu Physics</title>
+<title>Ajay Sahu Physics | JEE & NEET Expert</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#0b0b0b;color:#fff}
-header{padding:80px 20px;text-align:center;background:linear-gradient(135deg,#000,#1a1a1a)}
-h1{font-size:56px;max-width:900px;margin:auto;color:#d4af37}
-p{line-height:1.7}
-.btn{display:inline-block;margin:10px;padding:14px 24px;background:#d4af37;color:#000;text-decoration:none;border-radius:6px;font-weight:bold}
-section{max-width:1100px;margin:auto;padding:60px 20px}
-h2{color:#d4af37}
-.cards{display:flex;flex-wrap:wrap;gap:15px}
-.card{flex:1 1 220px;background:#151515;padding:20px;border-left:4px solid #d4af37;border-radius:8px}
-footer{text-align:center;padding:30px;background:#000}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0b1f45;
+    --navy-light: #122654;
+    --navy-dark: #071530;
+    --gold: #c9a84c;
+    --gold-light: #e0c06a;
+    --white: #ffffff;
+    --off-white: #f4f6fa;
+    --text-muted: #8a9bbf;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy-dark);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 40px;
+    background: rgba(7, 21, 48, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    padding: 9px 22px;
+    background: var(--gold);
+    color: var(--navy-dark) !important;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    font-size: 14px;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy-dark) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 20px 80px;
+    position: relative;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%),
+                linear-gradient(180deg, #071530 0%, #0b1f45 60%, #071530 100%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 820px; }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 12px; font-weight: 600; letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding: 6px 16px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 68px);
+    line-height: 1.12;
+    color: var(--white);
+    margin-bottom: 24px;
+    font-weight: 900;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 580px;
+    margin: 0 auto 40px;
+  }
+  .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 15px 32px;
+    background: var(--gold);
+    color: var(--navy-dark);
+    font-weight: 700; font-size: 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 15px 32px;
+    border: 1.5px solid rgba(201,168,76,0.5);
+    color: var(--gold);
+    font-weight: 600; font-size: 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.06); }
+
+  .hero-stats {
+    display: flex; justify-content: center; gap: 48px;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    flex-wrap: wrap;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--gold);
+  }
+  .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 90px 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 3px;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .section-sub {
+    font-size: 16px; color: var(--text-muted);
+    line-height: 1.7; max-width: 560px;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: center;
+    margin-top: 60px;
+  }
+  .about-text p {
+    color: var(--text-muted); line-height: 1.8; font-size: 15px;
+    margin-bottom: 16px;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-highlights { display: flex; flex-direction: column; gap: 16px; }
+  .highlight-item {
+    padding: 20px 24px;
+    background: rgba(201,168,76,0.04);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-left: 3px solid var(--gold);
+    border-radius: 2px;
+  }
+  .highlight-item strong {
+    display: block; color: var(--white); font-size: 15px; margin-bottom: 4px;
+  }
+  .highlight-item span { color: var(--text-muted); font-size: 13px; }
+
+  /* ── COURSES ── */
+  .courses-section { background: var(--navy); }
+  .courses-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px; margin-top: 48px;
+  }
+  .course-card {
+    padding: 28px 24px;
+    background: var(--navy-dark);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 4px;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .course-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .course-icon { font-size: 28px; margin-bottom: 14px; }
+  .course-card h3 { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+  .course-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+  /* ── NOTES / FUNNEL ── */
+  .notes-section {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, #0d2255 100%);
+    position: relative; overflow: hidden;
+  }
+  .notes-section::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .notes-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px; margin-top: 48px;
+  }
+  .note-card {
+    padding: 24px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .note-tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gold); background: rgba(201,168,76,0.1);
+    padding: 4px 10px; border-radius: 2px;
+    width: fit-content;
+  }
+  .note-card h3 { font-size: 15px; color: var(--white); font-weight: 600; }
+  .note-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; flex: 1; }
+  .note-download {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 600;
+    color: var(--gold); text-decoration: none;
+    padding: 10px 18px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 3px;
+    transition: background 0.2s;
+    width: fit-content;
+  }
+  .note-download:hover { background: rgba(201,168,76,0.08); }
+
+  .notes-cta-box {
+    margin-top: 48px;
+    padding: 40px;
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 6px;
+    text-align: center;
+  }
+  .notes-cta-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; color: var(--white); margin-bottom: 10px;
+  }
+  .notes-cta-box p { color: var(--text-muted); margin-bottom: 24px; font-size: 15px; }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px; margin-top: 48px; align-items: start;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 16px; }
+  .contact-item {
+    display: flex; align-items: center; gap: 16px;
+    padding: 18px 20px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 4px;
+    text-decoration: none; color: inherit;
+    transition: border-color 0.2s;
+  }
+  .contact-item:hover { border-color: rgba(201,168,76,0.35); }
+  .contact-item-icon {
+    width: 40px; height: 40px;
+    background: rgba(201,168,76,0.1);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .contact-item-text strong {
+    display: block; font-size: 13px; color: var(--text-muted);
+    font-weight: 500; margin-bottom: 2px;
+  }
+  .contact-item-text span { font-size: 15px; color: var(--white); font-weight: 500; }
+  .whatsapp-block {
+    padding: 36px;
+    background: linear-gradient(135deg, rgba(37,211,102,0.06) 0%, rgba(201,168,76,0.06) 100%);
+    border: 1px solid rgba(37,211,102,0.2);
+    border-radius: 6px;
+  }
+  .whatsapp-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; color: var(--white); margin-bottom: 10px;
+  }
+  .whatsapp-block p { color: var(--text-muted); font-size: 14px; margin-bottom: 24px; line-height: 1.6; }
+  .btn-whatsapp {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 28px;
+    background: #25D366;
+    color: #fff;
+    font-weight: 700; font-size: 15px;
+    text-decoration: none; border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .btn-whatsapp:hover { background: #1ebe5a; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-dark);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; color: var(--gold);
+    margin-bottom: 8px;
+  }
+  footer p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .footer-links { display: flex; justify-content: center; gap: 24px; margin: 16px 0; flex-wrap: wrap; }
+  .footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+    .hero-stats { gap: 28px; }
+    .notes-cta-box { padding: 28px 20px; }
+    .whatsapp-block { padding: 24px 20px; }
+  }
 </style>
 </head>
 <body>
-<header>
-<h1>Physics That Builds Ranks, Not Just Marks</h1>
-<p>Master JEE Main, JEE Advanced, NEET, Class 11 & 12 Physics through concept-driven learning, strategic problem solving, and personal mentorship from Ajay Sahu.</p>
-<a class="btn" href="tel:8081005662">Call Now</a>
-<a class="btn" href="https://wa.me/918081005662">Book Free Demo</a>
-</header>
 
-<section>
-<h2>About Ajay Sahu</h2>
-<p>I am Ajay Sahu, a Physics educator dedicated to helping students develop strong conceptual understanding and exam-winning problem-solving skills. My approach combines clarity, discipline, and practical strategies that help students perform confidently in JEE Main, JEE Advanced, NEET, and Board examinations.</p>
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Ajay Sahu Physics</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#courses">Courses</a>
+    <a href="#notes">Free Notes</a>
+    <a href="#contact">Contact</a>
+    <a class="nav-cta" href="https://wa.me/918081005662?text=Hi%20Ajay%20Sir%2C%20I%20want%20to%20know%20more%20about%20your%20Physics%20classes.">WhatsApp Me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">JEE Main · JEE Advanced · NEET</div>
+    <h1>Physics That Makes<br><span>You Score.</span></h1>
+    <p class="hero-sub">Concept-driven learning, strategic problem solving, and personal mentorship — designed to help you rank, not just pass.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#notes">⬇ Download Free Notes</a>
+      <a class="btn-outline" href="https://wa.me/918081005662?text=Hi%20Ajay%20Sir%2C%20I%20want%20to%20book%20a%20free%20demo%20class.">Book Free Demo</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Years Teaching</div>
+      </div>
+      <div>
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Students Mentored</div>
+      </div>
+      <div>
+        <div class="stat-num">JEE & NEET</div>
+        <div class="stat-label">Exam Specialist</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section>
-<h2>Courses Offered</h2>
-<div class="cards">
-<div class="card">JEE Main Physics</div>
-<div class="card">JEE Advanced Physics</div>
-<div class="card">NEET Physics</div>
-<div class="card">Class 11 Physics</div>
-<div class="card">Class 12 Physics</div>
-</div>
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <h2 class="section-title">Who is Ajay Sahu?</h2>
+    <p class="section-sub">A Physics educator who believes every student can master the subject — with the right approach.</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm Ajay Sahu, a Physics educator focused on building strong conceptual foundations and exam-ready problem-solving skills in JEE and NEET aspirants.</p>
+        <p>My teaching is not about shortcuts — it's about understanding Physics so deeply that no problem feels unsolvable. I work personally with each student to bridge their gaps and sharpen their strengths.</p>
+        <p>From Mechanics to Modern Physics, every topic is taught with clarity, discipline, and purpose.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <strong>JEE Main & Advanced</strong>
+          <span>Complete syllabus, previous year analysis, and strategy sessions</span>
+        </div>
+        <div class="highlight-item">
+          <strong>NEET Physics</strong>
+          <span>Concept clarity + MCQ mastery for biology stream students</span>
+        </div>
+        <div class="highlight-item">
+          <strong>Class 11 & 12 Boards</strong>
+          <span>NCERT-first approach with exam-focused practice</span>
+        </div>
+        <div class="highlight-item">
+          <strong>Personal Mentorship</strong>
+          <span>1-on-1 doubt solving and performance tracking</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section>
-<h2>Free Notes & Resources</h2>
-<p>Download curated Physics notes, formula sheets, and revision material designed to strengthen concepts and boost exam performance.</p>
+<!-- COURSES -->
+<section id="courses" class="courses-section">
+  <div class="container">
+    <div class="section-label">Courses</div>
+    <h2 class="section-title">What I Teach</h2>
+    <p class="section-sub">Structured programs built around how JEE and NEET actually test Physics.</p>
+    <div class="courses-grid">
+      <div class="course-card">
+        <div class="course-icon">⚡</div>
+        <h3>JEE Main Physics</h3>
+        <p>Full syllabus coverage with chapter-wise practice and paper analysis</p>
+      </div>
+      <div class="course-card">
+        <div class="course-icon">🎯</div>
+        <h3>JEE Advanced Physics</h3>
+        <p>Deep problem solving, multi-concept questions, and elite rank strategy</p>
+      </div>
+      <div class="course-card">
+        <div class="course-icon">🔬</div>
+        <h3>NEET Physics</h3>
+        <p>Concept-based learning optimized for NEET's pattern and difficulty</p>
+      </div>
+      <div class="course-card">
+        <div class="course-icon">📘</div>
+        <h3>Class 11 Physics</h3>
+        <p>Build a rock-solid foundation from the very first chapter</p>
+      </div>
+      <div class="course-card">
+        <div class="course-icon">📗</div>
+        <h3>Class 12 Physics</h3>
+        <p>Board + entrance prep with focused revision and mock practice</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section>
-<h2>Connect With Me</h2>
-<p>📞 8081005662</p>
-<p>📧 ajaysirphysics01@gmail.com</p>
-<p>📍 Mumbai</p>
-<p>Instagram: https://www.instagram.com/ajaysahu_36</p>
-<p>LinkedIn: https://www.linkedin.com/in/ajay-sahu-66962a1a4</p>
+<!-- FREE NOTES -->
+<section id="notes" class="notes-section">
+  <div class="container">
+    <div class="section-label">Free Resources</div>
+    <h2 class="section-title">Download Free Notes</h2>
+    <p class="section-sub">Curated Physics notes, formula sheets, and revision material — completely free for JEE & NEET aspirants.</p>
+    <div class="notes-grid">
+      <div class="note-card">
+        <span class="note-tag">JEE / NEET</span>
+        <h3>Mechanics Formula Sheet</h3>
+        <p>All key formulas from Kinematics, Laws of Motion, Work-Energy, and Rotational Motion in one place.</p>
+        <a class="note-download" href="https://wa.me/918081005662?text=Hi%20Ajay%20Sir%2C%20I%20want%20the%20Mechanics%20Formula%20Sheet.">📥 Get on WhatsApp</a>
+      </div>
+      <div class="note-card">
+        <span class="note-tag">JEE Main</span>
+        <h3>Electrostatics Quick Notes</h3>
+        <p>Concise, exam-ready notes covering Coulomb's Law, Electric Field, Potential, and Capacitors.</p>
+        <a class="note-download" href="https://wa.me/918081005662?text=Hi%20Ajay%20Sir%2C%20I%20want%20the%20Electrostatics%20Quick%20Notes.">📥 Get on WhatsApp</a>
+      </div>
+      <div class="note-card">
+        <span class="note-tag">NEET</span>
+        <h3>Modern Physics Revision</h3>
+        <p>Photoelectric effect, atomic models, nuclear physics — simplified for quick NEET revision.</p>
+        <a class="note-download" href="https://wa.me/918081005662?text=Hi%20Ajay%20Sir%2C%20I%20want%20the%20Modern%20Physics%20Revision%20Notes.">📥 Get on WhatsApp</a>
+      </div>
+      <div class="note-card">
+        <span class="note-tag">JEE / NEET</span>
+        <h3>Optics Master Notes</h3>
+        <p>Ray optics, wave optics, and key derivations explained clearly with diagrams and shortcuts.</p>
+        <a class="note-download" href="https://wa.me/918081005662?text=Hi%20Ajay%20Sir%2C%20I%20want%20the%20Optics%20Master%20Notes.">📥 Get on WhatsApp</a>
+      </div>
+    </div>
+    <div class="notes-cta-box">
+      <h3>Want All Notes in One Go?</h3>
+      <p>Message me on WhatsApp and I'll send you the complete study material pack — free.</p>
+      <a class="btn-primary" href="https://wa.me/918081005662?text=Hi%20Ajay%20Sir%2C%20please%20send%20me%20all%20the%20free%20Physics%20notes.">💬 Get All Notes on WhatsApp</a>
+    </div>
+  </div>
 </section>
 
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Connect</div>
+    <h2 class="section-title">Get in Touch</h2>
+    <p class="section-sub">Have a question? Want to start learning? Reach out directly.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <a class="contact-item" href="tel:8081005662">
+          <div class="contact-item-icon">📞</div>
+          <div class="contact-item-text">
+            <strong>Phone</strong>
+            <span>8081005662</span>
+          </div>
+        </a>
+        <a class="contact-item" href="mailto:ajaysirphysics01@gmail.com">
+          <div class="contact-item-icon">✉️</div>
+          <div class="contact-item-text">
+            <strong>Email</strong>
+            <span>ajaysirphysics01@gmail.com</span>
+          </div>
+        </a>
+        <a class="contact-item" href="https://www.instagram.com/ajaysahu_36" target="_blank">
+          <div class="contact-item-icon">📸</div>
+          <div class="contact-item-text">
+            <strong>Instagram</strong>
+            <span>@ajaysahu_36</span>
+          </div>
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/ajay-sahu-66962a1a4" target="_blank">
+          <div class="contact-item-icon">💼</div>
+          <div class="contact-item-text">
+            <strong>LinkedIn</strong>
+            <span>Ajay Sahu</span>
+          </div>
+        </a>
+      </div>
+      <div class="whatsapp-block">
+        <h3>Start on WhatsApp</h3>
+        <p>Message me directly to get free notes, ask a doubt, or book a free demo class. I respond personally.</p>
+        <a class="btn-whatsapp" href="https://wa.me/918081005662?text=Hi%20Ajay%20Sir%2C%20I%20want%20to%20know%20more%20about%20your%20Physics%20classes.">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Message on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-© 2026 Ajay Sahu Physics | JEE • NEET • Class 11 & 12 Physics<br>
-Mumbai, Maharashtra, India
+  <div class="footer-logo">Ajay Sahu Physics</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#courses">Courses</a>
+    <a href="#notes">Free Notes</a>
+    <a href="#contact">Contact</a>
+    <a href="https://www.instagram.com/ajaysahu_36" target="_blank">Instagram</a>
+  </div>
+  <p>© 2026 Ajay Sahu Physics · JEE Main · JEE Advanced · NEET · Class 11 & 12</p>
+  <p style="margin-top:6px;">Mumbai, Maharashtra, India</p>
 </footer>
+
 </body>
 </html>
