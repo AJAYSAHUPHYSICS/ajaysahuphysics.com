@@ -316,7 +316,23 @@
   }
   .btn-whatsapp:hover { background: #1ebe5a; }
 
-  /* ── FOOTER ── */
+  /* ── TESTIMONIAL CARDS ── */
+.tcard {
+  padding:28px;
+  background:var(--navy-dark);
+  border:1px solid rgba(201,168,76,0.15);
+  border-radius:6px;
+  position:relative;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: default;
+}
+.tcard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201,168,76,0.5);
+  box-shadow: 0 12px 40px rgba(201,168,76,0.1);
+}
+
+/* ── FOOTER ── */
   footer {
     background: var(--navy-dark);
     border-top: 1px solid rgba(201,168,76,0.1);
@@ -503,7 +519,7 @@
     <p class="section-sub">Real messages from real students — unedited, straight from the heart.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px;">
 
-      <div style="padding:28px;background:var(--navy-dark);border:1px solid rgba(201,168,76,0.15);border-radius:6px;position:relative;">
+      <div class="tcard">
         <div style="font-size:40px;color:var(--gold);opacity:0.3;position:absolute;top:16px;right:20px;font-family:serif;">201c</div>
         <p style="color:#b0bdd6;font-size:14px;line-height:1.8;margin-bottom:20px;">M bas yahi bolna chahta hu — aapne hume is layak banaya. You are the real creator and its credit goes really to you. Not after our parents but with our parents. You sacrificed your family, friends, personal space, leaves for our syllabus completion. I know you care about us more than even yourself. Love you so much Sir, as I love my father.</p>
         <div style="display:flex;align-items:center;gap:12px;">
@@ -512,7 +528,7 @@
         </div>
       </div>
 
-      <div style="padding:28px;background:var(--navy-dark);border:1px solid rgba(201,168,76,0.15);border-radius:6px;position:relative;">
+      <div class="tcard">
         <div style="font-size:40px;color:var(--gold);opacity:0.3;position:absolute;top:16px;right:20px;font-family:serif;">201c</div>
         <p style="color:#b0bdd6;font-size:14px;line-height:1.8;margin-bottom:20px;">Feels lucky to have a teacher like you. The way you build our understanding power 2014 that is something I had never heard before from any teacher.</p>
         <div style="display:flex;align-items:center;gap:12px;">
@@ -521,7 +537,7 @@
         </div>
       </div>
 
-      <div style="padding:28px;background:var(--navy-dark);border:1px solid rgba(201,168,76,0.15);border-radius:6px;position:relative;">
+      <div class="tcard">
         <div style="font-size:40px;color:var(--gold);opacity:0.3;position:absolute;top:16px;right:20px;font-family:serif;">201c</div>
         <p style="color:#b0bdd6;font-size:14px;line-height:1.8;margin-bottom:20px;">I am very thankful to you Sir. You supported me so much in my journey. Definitely your students are going to shine in their lives. Thank you so much Sir.</p>
         <div style="display:flex;align-items:center;gap:12px;">
