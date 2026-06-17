@@ -266,6 +266,109 @@
   }
   .notes-cta-box p { color: var(--text-muted); margin-bottom: 24px; font-size: 15px; }
 
+  /* ── PYQ ── */
+  .pyq-section { background: var(--navy); }
+  .pyq-tabs {
+    display: flex; gap: 10px; margin-top: 40px; margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .pyq-tab {
+    padding: 10px 22px;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .pyq-tab:hover { border-color: rgba(201,168,76,0.4); color: var(--white); }
+  .pyq-tab.active {
+    background: var(--gold); color: var(--navy-dark);
+    border-color: var(--gold);
+  }
+  .pyq-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .pyq-card {
+    padding: 22px 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .pyq-card:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.05);
+    transform: translateY(-2px);
+  }
+  .pyq-card-num {
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    color: var(--gold); opacity: 0.7;
+  }
+  .pyq-card h4 {
+    font-size: 15px; color: var(--white); font-weight: 600;
+  }
+  .pyq-card-meta {
+    font-size: 12px; color: var(--text-muted);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .pyq-card-meta span {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); opacity: 0.5;
+  }
+
+  /* Modal */
+  .pyq-modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(7,21,48,0.85);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .pyq-modal-overlay.show { display: flex; }
+  .pyq-modal {
+    background: var(--navy-dark);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 8px;
+    padding: 40px 32px;
+    max-width: 380px;
+    text-align: center;
+    position: relative;
+    animation: pyqModalIn 0.25s ease;
+  }
+  @keyframes pyqModalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .pyq-modal-close {
+    position: absolute; top: 14px; right: 16px;
+    background: none; border: none;
+    color: var(--text-muted); font-size: 20px;
+    cursor: pointer; line-height: 1;
+  }
+  .pyq-modal-close:hover { color: var(--gold); }
+  .pyq-modal-icon {
+    font-size: 32px; margin-bottom: 16px;
+  }
+  .pyq-modal h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; color: var(--white); margin-bottom: 10px;
+  }
+  .pyq-modal p {
+    font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px;
+  }
+  .pyq-modal-chapter {
+    color: var(--gold); font-weight: 600;
+  }
+
   /* ── CONTACT ── */
   .contact-grid {
     display: grid; grid-template-columns: 1fr 1fr;
@@ -381,6 +484,7 @@
     <a href="#about">About</a>
     <a href="#courses">Courses</a>
     <a href="#notes">Free Notes</a>
+    <a href="#pyq">PYQs</a>
     <a href="#contact">Contact</a>
     <a class="nav-cta" href="https://wa.me/918081005662?text=Hi%20Ajay%20Sir%2C%20I%20want%20to%20know%20more%20about%20your%20Physics%20classes.">WhatsApp Me</a>
   </div>
@@ -523,6 +627,79 @@
   </div>
 </section>
 
+<!-- PYQ -->
+<section id="pyq" class="pyq-section">
+  <div class="container">
+    <div class="section-label">Previous Year Questions</div>
+    <h2 class="section-title">Practice Real Exam Questions</h2>
+    <p class="section-sub">Chapter-wise PYQs for JEE Main, JEE Advanced, and NEET Physics — organized so you can target exactly what you need to revise.</p>
+
+    <div class="pyq-tabs">
+      <button class="pyq-tab active" data-exam="jee-main" onclick="pyqSwitchTab('jee-main', this)">JEE Main</button>
+      <button class="pyq-tab" data-exam="jee-advanced" onclick="pyqSwitchTab('jee-advanced', this)">JEE Advanced</button>
+      <button class="pyq-tab" data-exam="neet" onclick="pyqSwitchTab('neet', this)">NEET</button>
+    </div>
+
+    <div class="pyq-grid" id="pyq-grid">
+      <!-- populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- PYQ Coming Soon Modal -->
+<div class="pyq-modal-overlay" id="pyq-modal-overlay" onclick="if(event.target===this) pyqCloseModal()">
+  <div class="pyq-modal">
+    <button class="pyq-modal-close" onclick="pyqCloseModal()">✕</button>
+    <div class="pyq-modal-icon">⏳</div>
+    <h3>Coming Soon</h3>
+    <p>PYQs for <span class="pyq-modal-chapter" id="pyq-modal-chapter">this chapter</span> are being added. Check back soon, or message me on WhatsApp to get notified first.</p>
+    <a class="btn-primary" href="https://wa.me/918081005662?text=Hi%20Ajay%20Sir%2C%20please%20notify%20me%20when%20chapter-wise%20PYQs%20are%20ready." target="_blank">💬 Notify Me on WhatsApp</a>
+  </div>
+</div>
+
+<script>
+  const pyqChapters = [
+    "Physical World & Units", "Kinematics", "Laws of Motion", "Work, Energy & Power",
+    "System of Particles & Rotational Motion", "Gravitation", "Mechanical Properties of Solids",
+    "Mechanical Properties of Fluids", "Thermal Properties of Matter", "Thermodynamics",
+    "Kinetic Theory of Gases", "Oscillations", "Waves", "Motion in a Plane"
+  ];
+
+  const pyqExamLabels = {
+    "jee-main": "JEE Main",
+    "jee-advanced": "JEE Advanced",
+    "neet": "NEET"
+  };
+
+  function pyqRenderGrid(exam) {
+    const grid = document.getElementById('pyq-grid');
+    grid.innerHTML = pyqChapters.map((ch, i) => `
+      <div class="pyq-card" onclick="pyqOpenModal('${ch.replace(/'/g, "\\'")}')">
+        <span class="pyq-card-num">CH ${String(i + 1).padStart(2, '0')}</span>
+        <h4>${ch}</h4>
+        <div class="pyq-card-meta"><span></span>${pyqExamLabels[exam]} Physics</div>
+      </div>
+    `).join('');
+  }
+
+  function pyqSwitchTab(exam, btn) {
+    document.querySelectorAll('.pyq-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    pyqRenderGrid(exam);
+  }
+
+  function pyqOpenModal(chapterName) {
+    document.getElementById('pyq-modal-chapter').textContent = chapterName;
+    document.getElementById('pyq-modal-overlay').classList.add('show');
+  }
+
+  function pyqCloseModal() {
+    document.getElementById('pyq-modal-overlay').classList.remove('show');
+  }
+
+  pyqRenderGrid('jee-main');
+</script>
+
 <!-- TESTIMONIALS -->
 <section style="background:var(--navy);padding:90px 20px;">
   <div class="container">
@@ -618,6 +795,7 @@
     <a href="#about">About</a>
     <a href="#courses">Courses</a>
     <a href="#notes">Free Notes</a>
+    <a href="#pyq">PYQs</a>
     <a href="#contact">Contact</a>
     <a href="https://www.instagram.com/ajaysahu_36" target="_blank">Instagram</a>
   </div>
